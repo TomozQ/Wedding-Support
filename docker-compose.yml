@@ -9,6 +9,7 @@ services:
         volumes:
             - ./backend:/var/www/html/backend
             - enlive-vendor:/var/www/html/backend/vendor
+            - ./backend/docker-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
         depends_on:
             - db
         networks:
@@ -32,10 +33,10 @@ services:
         ports:
             - "3306:3306"
         environment:
-            MYSQL_DATABASE: mysql
-            MYSQL_USER: mysql
-            MYSQL_PASSWORD: mysql
-            MYSQL_ROOT_PASSWORD: mysql
+            MYSQL_DATABASE: testxdebug
+            MYSQL_USER: testxdebuguser
+            MYSQL_PASSWORD: P@ssword123
+            MYSQL_ROOT_PASSWORD: P@ssword123
         networks:
             - app
     nginx:
